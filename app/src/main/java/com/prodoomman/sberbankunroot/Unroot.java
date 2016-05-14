@@ -54,4 +54,53 @@ public class Unroot implements IXposedHookLoadPackage {
             XposedBridge.log(e);
         }
 
+        try {
+
+            Class<?> obfuscatedSheet = findClass("ru.sberbank.kavsdk.e.a", lpparam.classLoader);
+
+            try {
+
+                XposedHelpers.findAndHookMethod(obfuscatedSheet, "b", new XC_MethodReplacement() {
+
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                        return false;
+                    }
+                });
+            } catch (Exception e) {
+                XposedBridge.log(e);
+            }
+
+            try {
+
+                XposedHelpers.findAndHookMethod(obfuscatedSheet, "d", new XC_MethodReplacement() {
+
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                        return false;
+                    }
+                });
+            } catch (Exception e) {
+                XposedBridge.log(e);
+            }
+
+            try {
+                XposedHelpers.findAndHookMethod(obfuscatedSheet, "e", new XC_MethodReplacement() {
+
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                        return false;
+                    }
+                });
+            } catch (Exception e) {
+                XposedBridge.log(e);
+            }
+
+        }
+        catch(XposedHelpers.ClassNotFoundError e) {
+            XposedBridge.log(e);
+        }
+
+    }
+
 }
